@@ -1,0 +1,113 @@
+package pokemon_savedata_editor;
+
+import java.io.*;
+/**
+ * <p>タイトル: ポケモン　セーブデータエディタ</p>
+ * <p>説明: </p>
+ * <p>著作権: Copyright (c) 2005 PSI</p>
+ * <p>会社名: </p>
+ * @author 未入力
+ * @version 1.0
+ */
+
+class File_read extends Thread{
+  private static String FileName="";//処理するファイル名
+  private static String FolderName="";
+  private static final int buff = 0x1000;//ブロックサイズの大きさ
+  private static final int start_off = 0xff4;//先頭ブロックの大きさ
+  private static byte[] data = new byte[buff];
+  //private static Frame Frame = new Frame();
+  private static tools tools = new tools();
+  private static FileInputStream in;
+  private static FileOutputStream out;
+  private static File iFile;
+  private static File oFile;
+  private static int FileSize;//ファイルサイズ
+  private static final int block_amount = Frame.block_amount;
+  // コンストラクタ
+  public File_read(String FileName,String FolderName) {
+    this.FileName = FileName;//処理するファイル名を受け取る
+    this.FolderName = FolderName;
+    try{
+      File Folder = new File(FolderName);
+      Folder.mkdir();
+    }catch(Exception e){
+      Frame.statusSet("エラー！："+e);
+    }
+  }
+
+  public void run(){
+    file_read();//ファイルの読み込み・分割
+    load_finish();
+  }
+  private static void file_read(){
+    try{
+      iFile = new File(FileName);
+      in = new FileInputStream(iFile);
+
+      //最初の読み込み
+      byte[] startData = new byte[start_off];
+      FileSize=in.available();
+      in.read(startData,0x0,start_off);
+      oFile = new File("./"+FolderName+"/0.tmp");
+      oFile.createNewFile();
+      out = new FileOutputStream(oFile);
+      out.write(startData);
+      out.close();
+      startData = null;//メモリ節約？
+      Frame.block_name_list[0]="00:先頭ブロック";
+      Frame.block_list[0][0]=0;//順番
+      Frame.block_list[0][1]=start_off;//サイズ
+      Frame.block_list[0][2]=0;//開始アドレス
+      Frame.block_cr[0][0]="****";
+      Frame.block_cr[0][1]="**** (= **** )";
+
+      //次からは各ブロックデータ
+      for(int i=1; i<=block_amount;i++){//ブロックデータはblock_amount個
+      //for(int i=1;in.available() > 0;i++){
+        in.read(data,0,buff);
+        oFile = new File("./"+FolderName+"/"+i+".tmp");
+        oFile.createNewFile();
+        out = new FileOutputStream(oFile);
+        out.write(data);
+        out.close();
+        /*表示関連*/
+        Frame.block_name_list[i]=tools.space(Integer.toString(i),2,"0")+":第"+tools.toHex(data[0])+"ブロック";
+        Frame.block_list[i][0]=i;//順番
+        Frame.block_list[i][1]=buff;//サイズ
+        Frame.block_list[i][2]=(i-1) * buff + start_off;//開始アドレス
+        Frame.block_cr[i][0] = tools.space(tools.toHex(data[3]),2,"0") +
+           tools.space(tools.toHex(data[2]),2,"0");//チェックサム
+        Frame.block_cr[i][1] = tools.space(tools.toHex(data[0x9]),2,"0")
+            + tools.space(tools.toHex(data[0x8]),2,"0")+" (= "
+                          +(data[0x9]*256+data[0x8])+" )";//レポート回数
+        /*表示関連終了*/
+      }
+      //最終データの読み込み
+      int endSize=FileSize-(block_amount*buff + start_off);
+      byte[] end_data = new byte[endSize];
+      in.read(end_data,0,endSize);
+      oFile = new File("./"+FolderName+"/"+Integer.toString(block_amount+1)+".tmp");
+      oFile.createNewFile();
+      out = new FileOutputStream(oFile);
+      out.write(end_data);
+      out.close();
+      in.close();
+      end_data = null;//節約？
+      Frame.block_name_list[block_amount+1]=Integer.toString(block_amount+1)+":最終ブロック";
+      Frame.block_list[block_amount+1][0]=block_amount+1;//順番
+      Frame.block_list[block_amount+1][1]=endSize;//サイズ
+      Frame.block_list[block_amount+1][2]=(block_amount) * buff + start_off;//開始アドレス
+      Frame.block_cr[block_amount+1][0] = "****";//チェックサム
+      Frame.block_cr[block_amount+1][1] = "**** (= **** )";//レポート回数
+
+    }catch(IOException e){
+      Frame.statusSet("エラー！："+e);
+    }
+  }
+
+  public void load_finish(){//読み込み完了の通知用
+    Frame.block_list_Reset(Frame.block_name_list);//ブロックリストをセット
+    Frame.statusSet("ファイル読み込み完了");
+  }
+}

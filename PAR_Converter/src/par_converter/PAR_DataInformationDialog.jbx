@@ -1,0 +1,14 @@
+[PropertyInfo]
+FileNameLabel,javax.swing.JLabel,false,false, , ,false,<デフォルト >
+FileNameLabel2,javax.swing.JLabel,false,false, , ,false,<デフォルト >
+gridBagLayout1,java.awt.GridBagLayout,false,false, , ,false,<デフォルト >
+Owner,javax.swing.JFrame,false,false, , ,false,<デフォルト >
+panel1,javax.swing.JPanel,false,false, , ,false,<デフォルト >
+VersionLabel,javax.swing.JLabel,false,false, , ,false,<デフォルト >
+VersionList,javax.swing.JComboBox,false,false, , ,false,<デフォルト >
+visible,boolean,false,false, , ,true,<デフォルト >
+[IconNames]
+
+
+
+

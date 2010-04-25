@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--JBuilder XML Project-->
+<project>
+  <property category="debug.0" name="SmartStepRedefineClasses" value="0"/>
+  <property category="debug.0" name="SmartStepSkipStaticInitializers" value="0"/>
+  <property category="debug.0" name="SmartStepSkipSynthetics" value="0"/>
+  <property category="generalFormatting2" name="overrideBasicFormatting" value="1"/>
+  <property category="javaFormatting" name="packagePrefixGroups" value="java;javax;BLANK_LINE;java.awt;javax.swing;BLANK_LINE;org;(*)"/>
+  <property category="personality" name="personality" value=""/>
+  <property category="runtime" name="DefaultConfiguration" value="-1"/>
+  <property category="runtime.0" name="ConfigurationName" value="PSDEditor"/>
+  <property category="runtime.0" name="RunnableType" value="com.borland.jbuilder.runtime.ApplicationRunner"/>
+  <property category="runtime.0" name="application.class" value="PokemonSaveDataEditorForGBA.PSDEditor"/>
+  <property category="serverservices" name="single.server.name" value="Tomcat 4.0"/>
+  <property category="sys" name="AuthorLabel" value="@author"/>
+  <property category="sys" name="BackupPath" value="bak"/>
+  <property category="sys" name="CheckStable" value="1"/>
+  <property category="sys" name="Company" value="\u03c8\uff08\u30d7\u30b5\u30a4\uff09\u306e\u8208\u5473\u95a2\u5fc3\u7a7a\u9593"/>
+  <property category="sys" name="CompanyLabel" value="\u4f1a\u793e\u540d:"/>
+  <property category="sys" name="Copyright" value="Copyright (c) 2005 PSI"/>
+  <property category="sys" name="CopyrightLabel" value="\u8457\u4f5c\u6a29:"/>
+  <property category="sys" name="DefaultPath" value="src"/>
+  <property category="sys" name="Description" value=""/>
+  <property category="sys" name="DescriptionLabel" value="\u8aac\u660e:"/>
+  <property category="sys" name="DocPath" value="doc"/>
+  <property category="sys" name="ExcludeClassEnabled" value="0"/>
+  <property category="sys" name="IncludeTestPath" value="1"/>
+  <property category="sys" name="InstanceVisibility" value="2"/>
+  <property category="sys" name="JDK" value="java version 1.5.0_06-b05"/>
+  <property category="sys" name="JvmVersion" value="1.2"/>
+  <property category="sys" name="LastTag" value="0"/>
+  <property category="sys" name="Libraries" value=""/>
+  <property category="sys" name="MakeStable" value="0"/>
+  <property category="sys" name="OutPath" value="classes"/>
+  <property category="sys" name="SourcePath" value="src;test"/>
+  <property category="sys" name="TestPath" value="test"/>
+  <property category="sys" name="Title" value="\u30dd\u30b1\u30e2\u30f3\u30bb\u30fc\u30d6\u30c7\u30fc\u30bf\u30a8\u30c7\u30a3\u30bf for GBA"/>
+  <property category="sys" name="TitleLabel" value="\u30bf\u30a4\u30c8\u30eb:"/>
+  <property category="sys" name="Version" value="1.0"/>
+  <property category="sys" name="VersionLabel" value="@version"/>
+  <property category="sys" name="WorkingDirectory" value="."/>
+  <property category="sys" name="uidesign.size.PokemonSaveDataEditorForGBA.CheatDialog" value="395,304"/>
+  <property category="sys" name="uidesign.size.PokemonSaveDataEditorForGBA.CreateCheatDialog" value="400,350"/>
+  <property category="sys" name="uidesign.size.pokemon_savedata_editor.FEDialog" value="216,82"/>
+  <property category="sys" name="uidesign.size.pokemon_savedata_editor.FEDlg" value="191,77"/>
+  <property category="sys" name="uidesign.size.pokemon_savedata_editor.FirstEnd_Block_Dialog" value="186,111"/>
+  <property category="sys" name="uidesign.size.pokemon_savedata_editor.SaveDlg" value="231,83"/>
+  <node name="PokemonSaveDataEditor_forGBA" type="Archive">
+    <property category="archiving" name="archiverClass" value="com.borland.jbuilder.wizard.archive.ApplicationArchiver"/>
+    <property category="archiving" name="contentRules.1" value="I:PokemonSaveDataEditorForGBA/**"/>
+    <property category="archiving" name="contentRules.2" value="I:psi/**"/>
+    <property category="archiving" name="libraryStates.1" value="2:PokeTools"/>
+    <property category="archiving" name="manifestConfigFile" value="0"/>
+    <property category="archiving" name="targetCompressed" value="1"/>
+    <property category="archiving" name="targetPath" value="%u30ea%u30bd%u30fc%u30b9/PokemonSaveDataEditor_forGBA/PokemonSaveDataEditorForGBA.jar"/>
+    <property category="archiving" name="usingRules" value="1"/>
+  </node>
+  <node name="PokeTools" type="Archive">
+    <property category="archiving" name="contentRules.1" value="I:psi/**"/>
+    <property category="archiving" name="includeDocumentation" value="1"/>
+    <property category="archiving" name="targetCompressed" value="1"/>
+    <property category="archiving" name="targetPath" value="E%|/prog/Java/lib/PokeTools.jar"/>
+    <property category="archiving" name="usingRules" value="1"/>
+  </node>
+  <file path="src/PokemonSaveDataEditorForGBA/CheatDialog.java"/>
+  <file path="src/PokemonSaveDataEditorForGBA/CustomizedTreeModel.java"/>
+  <file path="src/PokemonSaveDataEditorForGBA/CustomizedTreeNode.java"/>
+  <file path="src/PokemonSaveDataEditorForGBA/CustomizedTreeSelectionListener.java"/>
+  <file path="src/PokemonSaveDataEditorForGBA/Frame_AboutBox.java"/>
+  <file path="src/PokemonSaveDataEditorForGBA/Frame.java"/>
+  <file path="src/PokemonSaveDataEditorForGBA/icon.png"/>
+  <file path="src/PokemonSaveDataEditorForGBA/PopupMouseListener.java"/>
+  <file path="src/PokemonSaveDataEditorForGBA/PSDEditor.java"/>
+  <file path="src/PokemonSaveDataEditorForGBA/SaveCountChangeDialog.java"/>
+  <file path="src/PokemonSaveDataEditorForGBA/SaveDlg.java"/>
+  <file path="src/PokemonSaveDataEditorForGBA/Splash.java"/>
+</project>
