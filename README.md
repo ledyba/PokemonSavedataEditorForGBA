@@ -14,5 +14,5 @@ http://www.vector.co.jp/soft/win95/game/se391968.html
 
 License
 ======
-Licensed under GPL v3 or later.
+Licensed under AGPL v3 or later.
 
